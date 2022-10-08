@@ -1,0 +1,119 @@
+baseURL = 'https://creative-centaur-3b3fc7.netlify.app/'
+title = 'Moodhouse Print Studio'
+theme = 'basic'
+
+languageCode = "id-ID"
+DefaultContentLanguage = "id"
+
+enableRobotsTXT = true
+canonifyURLs = true
+
+[params]
+    author = "Moodhouse Print Studio"
+    Description = "Jasa Sablon Kaos Kualitas Premium, harga bersahabat. Kualitas Produksi Pioritas Kami. Sablon manual dengan berbagai pilihan terbaik."
+    facebook = "https://facebook.com/moodhouse.studio"
+    thumbnail = "https://raw.githubusercontent.com/ImRfyz/img/main/share.png"
+    
+    darkModeToggle = true
+    enableSearch = true
+    enableRobotsTXT = true
+    googleAnalytics = 'G-MEASUREMENT_ID'
+    frontBundle = "blog"
+    hideMeta = false
+    
+    # Home Setting
+    interoHeroTitle = "Jasa Sablon Kaos Kualitas Premium."
+    introHeroSubtitle = "Kami siap menerima proses pembuatan kaos untuk keperluan acara, komunitas, perusahaan, acara reuni, family gathering atau acara lainnya."
+
+    introSection1_Title = "Dedikasi Kami untuk Hasil Terbaik"
+    introSection1_Subtitle_1 = "Sejak awal berdiri, kami hanya fokus melayani produksi kaos saja. Dengan demikian, spesialisasi inilah yang menjadi kunci dari “Speedy System”  kami. Karena hanya membuat satu model produk, pengerjaannya akan lebih fokus dan optimal."
+    introSection1_Subtitle_2 = "Sablon manual dengan berbagai pilihan terbaik: rubber ramah lingkungan, plastisol, superwhite, discharge, plascharge dan tinta spesial efek seperti emas, glow in the dark dan lainnya"
+    introSection1_Photo = "/img/imgsection1.webp"
+
+    introSection2_Title = "Tentang Kami"
+    introSection2_Subtitle_1 = "Moodhouse Print Studio berlokasi di kota Karawang Jawa Barat. Merupakan Jasa Konveksi untuk berbagai macam kebutuhan seperti : Sablon Kaos, Kaos Polo, Jaket, Kemeja Bordir, Kaos Olahraga, Jas Almamater, Seragam Kerja dan Lain sebagainya."
+    introSection2_Subtitle_2 = "Tidak sekedar mengerjakan tapi kami memiliki standard ukuran dan bahan yang terjamin kualitasnya."
+    introSection2_Subtitle_3 = "Kami berdiri pada awal tahun 2015, kami masih bisa bertumbuh dengan pesat dan membuktikan bahwa kami sanggup bersaing dengan para pendahulu."
+    introSection2_Subtitle_4 = "Hal ini terbukti dengan tingginya tingkat repeat order produksi setiap bulannya bersamaan dengan rendahnya angka return tiap pemesanan kaos."
+    introSection2_1_Photo = "/img/mdhs1.webp"
+    introSection2_2_Photo = "/img/mdhs2.webp"
+    introSection2_Btn = "Lebih detail"
+    introSection2_link = "/page/tentang-kami/"
+
+    introSection3_Title = "Kualitas Produksi Pioritas Kami"
+    introSection3_Subtitle_1 = "Jasa kami meliputi jahit konfeksi, jahit semi butik dan sablon dengan standart kualitas premium."
+    introSection3_Subtitle_2 = "Selain itu kami juga melayani jasa desain dan branding untuk sebuah clothing brand. Kepuasan klien adalah pioritas kami, ketepatan waktu produksi adalah komitmen kami."
+    introSection3_Photo = "/img/imgsection3.webp"
+
+    # Custom copyright - optional
+    copyright = "Copyright © 2021 - Katheryn Fox · All rights reserved"
+    favicon = "/favicon.svg"
+
+[build]
+  writeStats = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+    tag = "tags"
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[menu]
+  #menu desktop
+  [[menu.main]]
+    identifier = "home" 
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]   
+    identifier = "jasa sablon"   
+    name = "Jasa Sablon"      
+    url = "/page/jasa-sablon"      
+    weight = 2
+
+  [[menu.main]]   
+    identifier = "blog" 
+    name = "Blog"
+    url = "blog"
+    weight = 3
+  
+  #menu canvas & mobile
+  [[menu.canvas]]
+    identifier = "hubungi kami"   
+    name = "Hubungi kami"      
+    url = "/page/hubungi-kami"      
+    weight = 1
+
+  [[menu.canvas]]
+    identifier = "tentang-kami" 
+    name = "Tentang Kami"
+    url = "/page/tentang-kami"
+    weight = 2
+
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+
+  [[related.indices]]
+    name = "title"
+    weight = 30
+
+  [[related.indices]]
+    name = "description"
+    weight = 30
+
+  [[related.indices]]
+    name = "tags"
+    weight = 30
+
+  [[related.indices]]
+    name = "date"
+    weight = 10

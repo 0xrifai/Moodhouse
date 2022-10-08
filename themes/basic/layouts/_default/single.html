@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ if .Params.banner }}
+<div class="container -mt-16">
+  <img class="fixed banner-fixed" src="{{ .Params.banner }}">
+</div>
+{{ end }}
+<div class="text-center sm:text-left z-10 w-full bg-black bg-opacity-50">
+  <div class="md:max-w-7xl mx-auto lg:px-8 px-4 pt-28 pb-20">
+    <h1 class="text-4xl text-yellow-500 font-bold mb-2">{{ .Title }}</h1>
+    <div class="text-base font-medium">MOODHOUSE • {{ .Date.Format "2006/01/02" }}</div>
+    {{ partial "component/tags.html" . }}
+  </div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-700">
+  {{ partial "component/breadcrumbs.html" . }}
+</div>
+<div class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-white transition-colors">
+  <div class="container md:max-w-7xl mx-auto lg:px-8 px-4 py-8">
+    <div class="grid grid-cols-4 md:grid-cols-12">
+      <div class="col-span-4 md:col-span-8">
+        {{ if  .Params.thumbnail }}
+        <figure>
+          <img class="w-full rounded-t-xl" src="{{ .Params.thumbnail }}" alt="{{ .Title }}">
+        </figure>
+        {{ end }}
+        <article class="shadow-md p-4 md:p-6 lg:p-8 xl:p-16 relative bg-white dark:bg-slate-800 rounded-b-xl prose max-w-none lg:prose-xl prose-slate dark:prose-invert prose-headings:tracking-tight prose-pre:dark:border prose-pre:dark:border-slate-700">
+          {{ .Content }}
+        </article>
+      </div>
+      <aside class="md:px-8 md:pl-4 md:pr-0 lg:pl-8 lg:pr-0 mt-8 md:mt-0 col-span-4 md:col-span-4">
+        {{ partial "component/widgets/newsletter.html" . }}
+        {{ partial "component/widgets/related.html" . }}
+      </aside>
+    </div>
+  </div>
+</div>
+{{ end }}

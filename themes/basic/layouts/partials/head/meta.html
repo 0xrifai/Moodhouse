@@ -1,0 +1,36 @@
+{{ if .Description }}
+<meta name="description" content="{{ .Description }}">
+<meta property="og:description" content="{{ .Description }}">
+<meta property="twitter:description" content="{{ .Description }}">
+<title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ site.Title }}</title>
+{{ else if eq .Kind "section" }}
+<meta name="description" content="{{ .Summary }}">
+<meta property="og:description" content="{{ .Summary }}">
+<meta property="twitter:description" content="{{ .Summary }}">
+{{ else }}
+<meta name="description" content="{{ .Site.Params.Description }}">
+<meta property="og:description" content="{{ .Site.Params.Description }}">
+<meta property="twitter:description" content="{{ .Site.Params.Description }}">
+{{ partial "head/schema_bussines.html" . }}
+<title>Moodhouse Print Studio | Jasa Sablon Kaos | Sablon Kaos Murah & Berkualitas</title>
+{{ end }}
+{{ if  .Params.thumbnail }}
+<meta property="og:image" content="{{ .Params.thumbnail }}">
+<meta property="twitter:image" content="{{ .Params.thumbnail }}">
+{{ else }}
+<meta property="og:image" content="{{ .Site.Params.thumbnail }}">
+<meta property="twitter:image" content="{{ .Site.Params.thumbnail }}">
+{{ end }}
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="{{ .Language.Lang }}" />
+<meta property='fb:app_id' content='625183305657708'/>
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ .Permalink }}">
+<meta property="twitter:title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}">
+{{ if isset .Params "date" }}
+<meta property="article:published_time" content="{{ (time .Date).Format "2006-01-02T15:04:05Z" }}">{{ end }}

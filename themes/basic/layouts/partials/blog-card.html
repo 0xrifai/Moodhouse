@@ -1,0 +1,12 @@
+  <div class="flex bg-white dark:bg-slate-800 transform flex-col overflow-hidden rounded rounded-xl shadow-lg shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+    {{ if .Params.thumbnail }}
+    <a href="{{ .Permalink }}">
+      <img class="w-full h-44" src="{{ .Params.thumbnail }}" alt="Sunset in the mountains" />
+    </a>
+    {{ end }}
+    <div class="mb-auto px-6 py-4">
+      <div class="mb-3"><a href="#" class="text-xs transition duration-500 ease-in-out"> {{ partial "component/tags.html" . }} </a></div>
+      <a href="{{ .Permalink }}" class="mb-2 inline-block inline-block text-lg font-medium transition duration-500 ease-in-out">{{ .Params.title }}</a>
+      <p class="text-sm">{{ .Params.description }}</p>
+    </div>
+  </div>

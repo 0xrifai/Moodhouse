@@ -1,0 +1,13 @@
+{{ $dataJ := getJSON "https://profilepageimages.usecue.com/images/moodhouse.studio/images.json" }}
+
+<div class="grid gap-2 grid-cols-3 sm:grid-cols-4 instafeed">
+    {{ range first 12 $dataJ }}
+      {{ $media_type := .media_type | lower }}
+      {{ $image_small := .image_small }}
+      {{ $permalink := .permalink }}
+      {{ $caption := .caption }}
+      <a href="{{ $permalink }}" target="_blank" rel="noopener noreferrer">
+        <img loading="lazy" class="{{ $media_type }} rounded-md" src="{{ $image_small }}" {{ with $caption }}alt="{{ . }}"{{ else }}alt=""{{ end }}>
+      </a>
+    {{ end }}
+</div>

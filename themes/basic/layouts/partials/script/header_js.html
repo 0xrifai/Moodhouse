@@ -1,0 +1,84 @@
+<!--pencarian-->
+{{ if .Site.Params.enableSearch }}
+{{- partial "component/search-ui.html" . -}}
+{{ end }}
+{{ template "_internal/google_analytics.html" . }}
+
+<!--darkmode-->
+<script>
+  var icon = document.getElementById("icon");
+
+  if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    icon.classList.remove("icon-moon-foggy-line");
+    icon.classList.add("icon-sun-foggy-line");
+
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+  function toggleDarkMode() {
+    if (document.documentElement.classList.contains('dark')) {
+      icon.classList.remove("icon-sun-foggy-line");
+      icon.classList.add("icon-moon-foggy-line");
+
+      document.documentElement.classList.remove('dark')
+      localStorage.theme = 'light'
+    } else {
+      icon.classList.remove("icon-moon-foggy-line");
+      icon.classList.add("icon-sun-foggy-line");
+
+      document.documentElement.classList.add('dark')
+      localStorage.theme = 'dark'
+    }
+  }
+</script>
+
+<!-- search -->
+<script>
+  const mobileMenu = document.querySelector('.search-desktop') //display search //masukan ke header class="search-desktop"
+  function toggleMenu() {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  }
+</script>
+
+<!-- Canvas -->
+<script>
+  function showCanvas() {
+    var containerElement = document.getElementById('main_container_full');
+    var y = document.getElementById("canvas");
+
+    if (y.style.display === "none") {
+      y.style.display = "block";
+      containerElement.setAttribute('class', 'blur-md dark:bg-slate-800/40 bg-slate-100/40');
+
+    } else {
+      y.style.display = "none";
+      containerElement.setAttribute('class', null);
+    }
+  }
+
+  function canvasClose(x) {
+    x.classList.toggle("icon-close-line");
+  }
+</script>
+
+<!-- menumobile -->
+<script>
+  function menuMobile() {
+    var containerElement = document.getElementById('main_container');
+    var x = document.getElementById("overlay");
+
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      containerElement.setAttribute('class', 'm_navbar');
+      
+    } else {
+      x.style.display = "none";
+      containerElement.setAttribute('class', null);
+    }
+  }
+  function menuClose(x) {
+    x.classList.toggle("icon-close-line");
+  }
+</script>

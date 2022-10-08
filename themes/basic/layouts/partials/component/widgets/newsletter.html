@@ -1,0 +1,18 @@
+
+    <div class="p-4 mb-8 rounded-lg bg-white dark:bg-slate-800 shadow-md">
+      <h2 class="text-2xl font-bold mb-4 tracking-tight">📫 Newsletter..</h2>
+      <p class="text-base font-normal text-slate-500 dark:text-slate-300">Mau dapat info dan tips belajar coding langsung ke emailmu?</p>
+      <form x-data="{name: '', email: ''}" action="https://www.getrevue.co/profile/moodhouseprintstd/add_subscriber" method="post" class="mt-6" id="opt-in-newsletter-form" name="opt-in-newsletter-form" target="_blank">
+        <div class="mb-4">
+          <label for="name" class="block font-sm mb-1 mt-2">Nama</label>
+          <input type="text" x-model:value="name" class="px-3 py-2 rounded-md w-full border border-slate-300 placeholder-slate-400 caret-yellow-600 text-yellow-600 font-medium" name="member[first_name]" id="member_first_name" placeholder="Nama panggilan" autocomplete="name" required="">
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block font-sm mb-1 mt-2">Email</label>
+          <input type="email" x-model:value="email" class="px-3 py-2 rounded-md w-full border border-slate-300 placeholder-slate-400 caret-yellow-600 text-yellow-600 font-medium" name="member[email]" id="member_email" placeholder="Alamat email" autocomplete="email" required="">
+        </div>
+        <div>
+          <button aria-label="Daftar" type="submit" class="px-3 py-2 my-4 text-white w-full bg-yellow-600 hover:bg-yellow-700 focus:ring-2 focus:ring-yellow-400 rounded-lg active:bg-yellow-500">Ya, Saya Mau!</button>
+        </div>
+      </form>
+    </div>

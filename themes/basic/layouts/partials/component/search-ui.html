@@ -1,0 +1,28 @@
+<div class="search-ui fixed top-0 left-0 w-full h-full bg-slate-900 text-slate-200 hidden">
+  <div class="w-full fixed mx-auto pt-12">
+      <div class="flex justify-between items-center mt-4 px-0 md:px-20">
+        <div class="w-full">
+          <input type="search" class="w-full py-2 px-3 border-search border-b focus:outline-none text-gray-900" placeholder="Enter search query" />
+        </div>
+        <div class="bg-white icon_box_close">
+          <span class="cursor-pointer close-search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" fill="rgba(0,0,0,1)"/></svg>
+          </span>
+       </div>
+      </div>
+    <div class="md:px-20 px-4">
+      <div class="search-results text-lg font-medium my-4 hidden">Results</div>
+      <ul class="search-list w-full overflow-scroll relative h my-2 custom_overflow_scroll scrollhidden grid grid-cols-1 divide-y divide-gray-200 "></ul>
+    </div>
+
+    <div class="no-results text-center my-8 hidden absolute top-0 w-full h-screen -z-10 pt-80">
+      <div class="text-xl font-semibold mb-2">No results found</div>
+      <p class="font-light text-sm">Try adjusting your search query</p>
+    </div>
+</div>
+
+{{ $fuse := resources.Get "js/fuse.min.js" }}
+{{ $search := resources.Get "js/search.js" }}
+
+{{ $concatjs := slice $fuse $search | resources.Concat "js/scripts.js" | resources.Minify }}
+<script src="{{ $concatjs.Permalink }}"></script>

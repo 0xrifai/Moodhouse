@@ -1,0 +1,29 @@
+{{ $jquary := resources.Get "js/jquery.js" }}
+{{ $concatjs := slice $jquary| resources.Concat "js/jquery.js" | resources.Minify }}
+<script src="{{ $concatjs.Permalink }}"></script>
+
+<!--scrolltop-->
+<script>
+    $(window).scroll(function() {
+      if ($(this).scrollTop()) {
+          $('#toTop').fadeIn();
+      } else {
+          $('#toTop').fadeOut();
+      }
+  });
+  
+  $("#toTop").click(function () {
+     $("html, body").animate({scrollTop: 0}, 1000);
+  });
+  </script>
+  
+  <script>
+    $(window).on("scroll", function() {
+      if($(window).scrollTop() > 1) {
+          $(".headers").addClass("active");
+      } else {
+          //remove the background property so it comes transparent again (defined in your css)
+         $(".headers").removeClass("active");
+      }
+  });
+  </script>

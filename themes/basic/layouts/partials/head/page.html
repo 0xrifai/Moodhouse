@@ -1,0 +1,11 @@
+{{ if eq .Section "page" }}
+<script type="application/ld+json">
+  {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ .Title }}",
+      "url": "{{ .Site.BaseURL }}"
+  }
+  </script>
+  
+{{ end }}

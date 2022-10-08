@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage">
+  {{- partial "head.html" . -}}
+  <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-white transition-colors transition-colors select-none">
+    {{- partial "component/nav-canvas.html" . -}}
+    <div id="main_container_full">
+    {{- partial "header.html" . -}}
+    <main id="main_container">
+    {{- block "main" . }}{{- end }}
+    <div class="search-desktop"></div>
+    </main>
+    {{- partial "footer.html" . -}}
+    </div>
+  </body>
+</html>

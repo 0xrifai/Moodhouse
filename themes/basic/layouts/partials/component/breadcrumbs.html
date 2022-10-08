@@ -1,0 +1,16 @@
+<div class="container md:max-w-7xl mx-auto lg:px-8 px-4 py-4 flex items-center overflow-y-auto whitespace-nowrap container md:max-w-7xl mx-auto scrollhidden">{{ template "breadcrumbnav" (dict "p1" . "p2" .) }}</div>
+{{ define "breadcrumbnav" }}
+{{ if .p1.Parent }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
+<span class="mx-1 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+    </svg>
+</span>
+{{ else if not .p1.IsHome }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+{{ end }}
+<div {{ if eq .p1 .p2 }} class="text-yellow-500"{{ end }}>
+    <a href="{{ .p1.Permalink }}">{{ .p1.Title }}</a>
+</div>
+{{ end }}

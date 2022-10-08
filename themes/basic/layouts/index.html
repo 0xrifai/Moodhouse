@@ -1,0 +1,39 @@
+{{ define "main" }}
+  {{ partial "intro.html" . }}
+  {{ $frontBundle := .Site.Params.frontBundle | default "blog" }}
+      <div class="w-full pt-6 md:pt-20 mt-5 md:mt-14 mx-auto lg:px-16 px-4 py-8 bg-slate-900 dark:bg-slate-50 dark:text-slate-800 text-slate-100">
+        <div class="flex flex-col space-y-3 mb-5">
+          <h2 class="text-base font-bold">UPDATE ARTIKEL</h2>
+          <h3 class="text-xl font-bold">Apa yang baru di Moodhouse Print Studio?</h3>
+          <p class="text-base">Baca artikel terbaru yang masih fresh dan hangat.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+        {{ range first 4 (where .Site.RegularPages.ByDate.Reverse "Type" $frontBundle)  }}
+        <div class="flex dark:bg-white bg-slate-800 transform flex-col overflow-hidden rounded rounded-xl shadow-lg shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+          {{ if .Params.thumbnail }}
+          <a href="{{ .Permalink }}">
+            <img class="w-full h-44" src="{{ .Params.thumbnail }}" alt="Sunset in the mountains" />
+          </a>
+          {{ end }}
+          <div class="mb-auto px-6 py-4">
+            <div class="mb-3">
+              <a href="#" class="text-xs transition duration-500 ease-in-out dark:text-white text-slate-800 "> 
+              {{ $taxonomy := "tags" }} {{ with .Param $taxonomy }}
+              <div class="flex items-center overflow-y-auto whitespace-nowrap scrollhidden">
+                {{ range $index, $tag := . }} 
+                  {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy $tag) -}}
+                    <li class="flex my-1 mr-1.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-50 dark:hover:bg-slate-600/25 hover:bg-slate-600/25 px-1 rounded text-md" ><a href="{{ .Permalink }}">#{{ $tag | urlize }}</a></li>
+                  {{- end -}} 
+                {{- end -}}
+              </div>
+              {{ end }}  
+            </a>
+          </div>
+            <a href="{{ .Permalink }}" class="mb-2 inline-block inline-block text-lg font-medium transition duration-500 ease-in-out">{{ .Params.title }}</a>
+            <p class="text-sm">{{ .Params.description }}</p>
+          </div>
+        </div>
+        {{ end }}
+        </div>
+      </div>
+{{ end }}

@@ -1,0 +1,39 @@
+
+<div class="mb-8 rounded-lg bg-white dark:bg-slate-800 shadow-md">
+    <h2 class="text-2xl font-bold p-4 tracking-tight border-b dark:border-slate-700">Artikel Terbaru</h2>
+    {{ range first 3 ( where .Site.Pages "Type" "blog" )}}
+    <a href="{{ .Permalink }}" title="{{ .Title }}">
+      <div class="flex justify-between items-center gap-2 p-4 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 transition-all">
+        <div>
+          <h3 class="text-lg font-semibold tracking-tight line-clamp-2 leading-tight mb-1">{{ .Title }}</h3>
+          <p class="text-sm text-slate-700 dark:text-slate-200 line-clamp-1">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</p>
+        </div>
+        {{ if  .Params.thumbnail }}
+        <img class="w-16 h-16 lazyload rounded lazyloaded" src="{{ .Params.thumbnail }}" alt="Post thumbnail" height="64" width="64">
+        {{ end }}
+      </div>
+    </a>
+    {{ end }}
+  </div>
+<div class="sticky w-full mx-auto md:w-auto top-16 mb-16 md:mb-0">
+    <div class="mb-8 rounded-lg bg-white dark:bg-slate-800 shadow-md">
+        <h2 class="text-2xl font-bold p-4 tracking-tight border-b dark:border-slate-700">Konten Terkait</h2>
+        {{ $related := .Site.RegularPages.Related . | first 4 }}
+        {{ with $related }}
+        {{ range . }}
+        <a href="{{ .Permalink }}" title="{{ .Title }}">
+        <div class="flex justify-between items-center gap-2 p-4 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 transition-all">
+            <div>
+            <h3 class="text-lg font-semibold tracking-tight line-clamp-2 leading-tight mb-1">{{ .Title }}</h3>
+            <p class="text-sm text-slate-700 dark:text-slate-200 line-clamp-1">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</p>
+            </div>
+            {{ if  .Params.thumbnail }}
+            <img class="w-16 h-16 lazyload rounded lazyloaded" src="{{ .Params.thumbnail }}" alt="Post thumbnail" height="64" width="64">
+            {{ end }}
+        </div>
+        </a>
+        {{ end }}
+        {{ end }}
+    </div>
+</div>
+

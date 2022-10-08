@@ -1,0 +1,13 @@
+{{ $frontBundle := .Site.Params.frontBundle | default "blog" }}
+    <div class="container md:max-w-7xl mx-auto lg:px-8 px-4 py-8">
+      <div class="flex flex-col space-y-3 mb-5">
+        <p class="text-base font-bold">UPDATE</p>
+        <h3 class="text-xl font-bold">Apa yang baru di Moodhouse Print Studio?</h3>
+        <p class="text-base">Baca artikel terbaru yang masih fresh dan hangat.</p>
+      </div>
+      <div class="container px-4 md:px-6 md:max-w-7xl mx-auto flex flex-wrap">
+      {{ range first 4 (where .Site.RegularPages.ByDate.Reverse "Type" $frontBundle)  }}
+      {{- partial "blog-card.html" . -}}
+      {{ end }}
+      </div>
+    </div>

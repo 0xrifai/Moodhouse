@@ -1,0 +1,23 @@
+<div id="canvas" class="fixed inset-y-0 right-0 z-50 flex" style="display:none;">
+    <div class="w-screen h-screen max-w-sm">
+      <div class="flex h-full flex-col divide-y divide-gray-200 bg-gray-50">
+        <div class="overflow-y-scroll">
+          <div class="flex h-16 items-center justify-between pl-6">
+            <span class="text-sm font-medium uppercase tracking-widest text-slate-800"> Menu </span>
+            <button onclick="showCanvas(1)" aria-label="Close menu" class="h-16 w-16 border-l border-gray-200" type="button">
+              <i class="c-icon text-slate-800 icon-close-line"></i>
+            </button>
+          </div>
+          <div class="flex flex-col divide-y divide-gray-200 border-t border-b border-gray-200 text-sm font-medium text-gray-500">
+            {{ range .Site.Menus.main }}
+            <a href="{{ .URL | relLangURL }}" class="px-6 py-3 flex md:hidden">{{ .Name }}</a>
+            {{ end }}
+
+            {{ range .Site.Menus.canvas }}
+            <a href="{{ .URL | relLangURL }}" class="px-6 py-3">{{ .Name }}</a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
